@@ -1,0 +1,14 @@
+function alertmsg()
+{
+  alert("Message from javascript alert");
+  console.log("message to developer");
+ }
+ function App()
+ {
+  return(
+   <div>
+      <button onClick = {(alertmsg)}>Click here</button>
+  </div>
+  )
+ }
+export default App;
