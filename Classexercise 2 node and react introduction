@@ -1,0 +1,26 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [myObject, setMyObject] = useState({ name: "Madras" });
+  const [myArray, setMyArray] = useState(["a", "e", "i", "o"]);
+
+  const handleButtonClick = () => {
+    const newObject = myObject;
+    newObject.name = "Chennai";
+
+    const vowelArray = myArray;
+    vowelArray.push("u");
+
+    console.log("myObject:", myObject);
+    console.log("myArray:", myArray);
+    alert("Check the console output!");
+  };
+
+  return (
+    <div>
+      <button onClick={handleButtonClick}>Reference Data Types</button>
+    </div>
+  );
+}
+
+export default App;
