@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+
+function ArrayOfObjects() {
+    const [users, setUsers] = useState([
+        {
+            id: 1, name: 'Sri', type: 'admin'
+        },
+        {
+            id: 2, name: 'Ravi', type: 'merchant'
+        }
+    ]);
+    const [name, setName] = useState('');
+    const [type, setType] = useState('');
+
+    const handleClick = () => {
+        const newUser = { id: users.length + 1, name: name, type: type }; // corrected 'user' to 'users'
+        setUsers([...users, newUser]);
+    };
+
+    return (
+        <div>
+            <ul>
+                {users.map((user) =>
+                    <div key={user.id}>
+                        <p>{user.name}</p>
+                        <p>{user.type}</p>
+                    </div>
+                )}
+            </ul>
+            <input
+                type="text"
+                placeholder="Enter name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="Enter type"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+            />
+            <button onClick={handleClick}>Click me</button>
+        </div>
+    );
+}
+
+export default ArrayOfObjects;
