@@ -1,0 +1,26 @@
+import React, { useState, useEffect } from 'react';
+
+const App = () => {
+  // Initial state for message
+  const [message, setMessage] = useState("Hello dear one, learning React...?");
+
+  // useEffect to change message after 2000ms
+  useEffect(() => {
+    console.log('useEffect hook called');
+
+    const timer = setTimeout(() => {
+      setMessage("Great.... This is time to learn about HOOKS");
+    }, 2000);
+
+    // Cleanup function to clear the timeout when the component unmounts
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array ensures this effect runs only once
+
+  return (
+    <div>
+      <h1>{message}</h1>
+    </div>
+  );
+};
+
+export default App;
