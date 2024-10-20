@@ -1,0 +1,171 @@
+//NavBar.js
+import React from "react";
+import { Link } from "react-router-dom";
+import './NavBar.css'; // Style file for NavBar
+
+const NavBar = () => {
+  return (
+    <nav className="navbar">
+      <h2>Music World</h2>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/singers">Singers</Link>
+        </li>
+        <li>
+          <Link to="/albums">Albums</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default NavBar;
+//Home.js
+import React from "react";
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to Music World</h1>
+      <p>Explore the world of music through our collection of singers and albums.</p>
+    </div>
+  );
+};
+
+export default Home;
+//Singers.js
+import React from "react";
+
+const Singers = () => {
+  const singersList = [
+    { name: "Adele", year: 2006 },
+    { name: "Beyoncé", year: 1997 },
+    { name: "Ed Sheeran", year: 2011 }
+  ];
+
+  return (
+    <div>
+      <h1>Singers</h1>
+      <ul>
+        {singersList.map((singer, index) => (
+          <li key={index}>
+            {singer.name} - {singer.year}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Singers;
+//Albums.js
+import React from "react";
+
+const Albums = () => {
+  const albumsList = [
+    { name: "25", singer: "Adele" },
+    { name: "Lemonade", singer: "Beyoncé" },
+    { name: "Divide", singer: "Ed Sheeran" }
+  ];
+
+  return (
+    <div>
+      <h1>Albums</h1>
+      <ul>
+        {albumsList.map((album, index) => (
+          <li key={index}>
+            {album.name} - {album.singer}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Albums;
+//App.js
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import Singers from "./components/Singers";
+import Albums from "./components/Albums";
+import './App.css';
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/singers" element={<Singers />} />
+          <Route path="/albums" element={<Albums />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+//App.css
+/* App.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+}
+
+.navbar h2 {
+  color: white;
+  display: inline-block;
+  margin: 0;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: inline-block;
+  padding-left: 0;
+  margin: 0;
+}
+
+.navbar ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
